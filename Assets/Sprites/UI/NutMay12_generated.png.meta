@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: -2975678631836029914
     second: NutMay12_generated_0
+  - first:
+      213: 23431662219936981
+    second: NutMay12_generated_1
+  - first:
+      213: 1970699094631959521
+    second: NutMay12_generated_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -138,7 +144,7 @@ TextureImporter:
         width: 510
         height: 235
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -146,6 +152,48 @@ TextureImporter:
       bones: []
       spriteID: 62c61b7dc0444b6d0800000000000000
       internalID: -2975678631836029914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NutMay12_generated_1
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 942
+        width: 505
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4cd1ff8fe335000800000000000000
+      internalID: 23431662219936981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NutMay12_generated_2
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 940
+        width: 265
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ebc8b6a264595b10800000000000000
+      internalID: 1970699094631959521
       vertices: []
       indices: 
       edges: []
