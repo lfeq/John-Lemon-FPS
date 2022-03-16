@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();

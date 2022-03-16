@@ -96,15 +96,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef29e5c20b423054ba1bbfbf53e52687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   animator: {fileID: 1740057948477327883}
   audioPistola: {fileID: 4759842478162194265}
   disparoClip: {fileID: 8300000, guid: 6588152af6357584ab3fb4a153bfe48c, type: 3}
   recargaClip: {fileID: 8300000, guid: 631f5c9f6a46e264d86b58f56d22825c, type: 3}
   gunGO: {fileID: 7736735683380308610}
-  shootInterval: 0.2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  shootInterval: 0.4
   maxBulletsPerRound: 7
   reloadTime: 3
-  armed: 0
+  damage: 2.3
+  bulletsInBox: 14
 --- !u!1 &355569639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1986109682}
   speed: 5
+  gameEnding: {fileID: 0}
 --- !u!1 &1740057948467984837
 GameObject:
   m_ObjectHideFlags: 0

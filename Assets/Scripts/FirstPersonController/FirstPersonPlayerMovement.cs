@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FirstPersonPlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 12f;
+    public GameEnding gameEnding;
 
     private AudioSource audio;
 
@@ -44,12 +43,25 @@ public class FirstPersonPlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+
+
+    private void OnTriggerEnter(Collider collision)
     {
-        if(other.gameObject.tag == "PistolaEscondida")
+        if(collision.gameObject.tag == "PistolaEscondida")
         {
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
             EventManagerLvl1.current.PickUpGunTrigger();
+        }
+
+        if (collision.gameObject.tag == "Bullets")
+        {
+            Destroy(collision.gameObject);
+            EventManagerLvl1.current.PickUpBulletsTrigger();
+        }
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            gameEnding.CaughtPlayer();
         }
     }
 }

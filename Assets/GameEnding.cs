@@ -65,13 +65,13 @@ public class GameEnding : MonoBehaviour
             }
             else
             {
-                if(SceneManager.GetActiveScene().buildIndex == 0)
+                if(SceneManager.GetActiveScene().buildIndex == 1)
                 {
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(2);
                 }
                 else
                 {
-                    Application.Quit();
+                    SceneManager.LoadScene(0);
                 }
             }
         }
@@ -80,5 +80,10 @@ public class GameEnding : MonoBehaviour
     public void CaughtPlayer()
     {
         m_IsPlayerCaught = true;
+    }
+
+    public void FinishedLevel()
+    {
+        m_IsPlayerAtExit = true;
     }
 }

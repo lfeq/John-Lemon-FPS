@@ -846,7 +846,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7484043616153370166}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.25
   m_Height: 1.2
@@ -907,6 +907,8 @@ MonoBehaviour:
   waypoints: []
   levelManager: {fileID: 0}
   healthbar: {fileID: 1642237309709892064}
+  bulletPrefab: {fileID: 6243280080235224955, guid: 0716599967bcdc945a41886fed16735c,
+    type: 3}
 --- !u!82 &1795927541016076128
 AudioSource:
   m_ObjectHideFlags: 0

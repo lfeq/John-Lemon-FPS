@@ -20,12 +20,14 @@ public class WaypointPatrol : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Transform startPosotion = transform;
-        levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<Level1Manager>();
-        M_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        waypoints = new Transform[2];
-        waypoints[0] = levelManager.waypoints[Random.Range(0, levelManager.waypoints.Length)];
-        waypoints[1] = levelManager.waypoints[Random.Range(0, levelManager.waypoints.Length)];
+        if(waypoints.Length == 0)
+        {
+            levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<Level1Manager>();
+            M_Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            waypoints = new Transform[2];
+            waypoints[0] = levelManager.waypoints[Random.Range(0, levelManager.waypoints.Length)];
+            waypoints[1] = levelManager.waypoints[Random.Range(0, levelManager.waypoints.Length)];
+        }
         navMeshAgent.SetDestination(waypoints[0].position);
         healthbar.gameObject.SetActive(false);
         originalSpeed = navMeshAgent.speed;
@@ -60,7 +62,10 @@ public class WaypointPatrol : MonoBehaviour
 
         if (healthbar.value <= 0)
         {
-            levelManager.KilledEnemy();
+            if(levelManager != null)
+            {
+                levelManager.KilledEnemy();
+            }
             Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         } //Se Muere :(

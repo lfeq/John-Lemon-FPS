@@ -17,9 +17,10 @@ public class Shoot : MonoBehaviour
     public int maxBulletsPerRound = 7; //Maximo de balas que puede disparar antes de recargar
     public float reloadTime = 3f; //Tiempo de recarga
     public float damage = 2.3f;
+    public int bulletsInBox = 14;
+    public bool armed; //Checar si el jugador esta armado
+    public int totalBullets = 0; //Total de balas que se tiene
 
-    private bool armed; //Checar si el jugador esta armado
-    private int totalBullets = 0; //Total de balas que se tiene
     private float shootCooldown = 0;
     private TMP_Text bulletCountText;
     private Image reloadImage;
@@ -36,6 +37,7 @@ public class Shoot : MonoBehaviour
         bulletCountText.text = "";
         reloadImage.gameObject.SetActive(false);
         EventManagerLvl1.current.pickedUpGun += PickUpGun;
+        EventManagerLvl1.current.pickedUpBulllets += PickUpBullets;
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class Shoot : MonoBehaviour
     {
         if (armed)
         {
-            if (Input.GetKeyUp(KeyCode.R) && totalBullets > 0)
+            if (Input.GetKeyUp(KeyCode.R) && totalBullets > 0 && !reloading)
             {
                 if (currentBullets != maxBulletsPerRound)
                 {
@@ -147,6 +149,11 @@ public class Shoot : MonoBehaviour
         gunGO.SetActive(true);
         totalBullets = 14;
         armed = true;
+    }
+
+    void PickUpBullets()
+    {
+        totalBullets += bulletsInBox;
     }
 
     IEnumerator playEngineSound(AudioClip clip)
