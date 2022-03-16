@@ -6,7 +6,8 @@ public class FirstPersonPlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 12f;
-    public AudioSource audio;
+
+    private AudioSource audio;
 
     private void Start()
     {
@@ -40,6 +41,15 @@ public class FirstPersonPlayerMovement : MonoBehaviour
         else
         {
             audio.Stop();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "PistolaEscondida")
+        {
+            Destroy(other.gameObject);
+            EventManagerLvl1.current.PickUpGunTrigger();
         }
     }
 }

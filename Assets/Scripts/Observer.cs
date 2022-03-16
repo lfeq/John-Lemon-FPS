@@ -5,10 +5,14 @@ using UnityEngine;
 public class Observer : MonoBehaviour
 {
     public Transform player;
+    public WaypointPatrol patrol;
 
     bool m_IsPlayerInRange;
 
-    public GameEnding gameEnding;
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -40,7 +44,7 @@ public class Observer : MonoBehaviour
             {
                 if (raycastHit.collider.transform == player)
                 {
-                    gameEnding.CaughtPlayer();
+                    patrol.ChacePlayer();
                 }
             }
         }

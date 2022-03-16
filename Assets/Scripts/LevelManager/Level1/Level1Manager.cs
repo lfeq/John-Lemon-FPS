@@ -12,6 +12,12 @@ public class Level1Manager : MonoBehaviour
     [SerializeField] string[] missions;
     private int currentMission = 0;
 
+    [Header("Waypoints & Enemies")]
+    public GameObject enemyPrefab;
+    public int maxEnemies;
+    public Transform[] waypoints;
+    private int remainingenemies;
+
     [Header("TIMER")]
     public float finishMissionTimer = 4; 
     private bool timerIsRunning = false;
@@ -20,8 +26,9 @@ public class Level1Manager : MonoBehaviour
     void Start()
     {
         pistolaEscondida[Random.Range(0, pistolaEscondida.Length)].SetActive(true);
-        StartCoroutine(TypeEffect(missions[currentMission]));
+        StartCoroutine(TypeEffect(missions[currentMission], true));
         finishMissionTimer = finishMissionTimer * 60;
+        EventManagerLvl1.current.pickedUpGun += StopTimer;
     }
 
     // Update is called once per frame
@@ -51,10 +58,10 @@ public class Level1Manager : MonoBehaviour
         missionIndicatorText.text = missions[currentMission] + ": " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    IEnumerator TypeEffect(string text)
+    IEnumerator TypeEffect(string text, bool runTime)
     {
-        missionIndicatorAnimator.SetTrigger("Sleep");
         missionIndicatorText.text = "";
+        missionIndicatorAnimator.SetTrigger("Sleep");
 
         foreach (char chacarcter in text.ToCharArray())
         {
@@ -63,6 +70,39 @@ public class Level1Manager : MonoBehaviour
         }
 
         missionIndicatorAnimator.SetTrigger("Awake");
-        timerIsRunning = true;
+        if (runTime)
+        {
+            timerIsRunning = runTime;
+        }
+
+        else
+        {
+            RemainingEnemiesText();
+        }
+    }
+
+    void StopTimer()
+    {
+        timerIsRunning = false;
+        currentMission++;
+        remainingenemies = maxEnemies;
+
+        for(int i = 0; i < maxEnemies; i++)
+        {
+            Instantiate(enemyPrefab, waypoints[Random.Range(0, waypoints.Length)].gameObject.transform.position, Quaternion.identity);
+        }
+
+        StartCoroutine(TypeEffect(missions[currentMission], false));
+    }
+
+    void RemainingEnemiesText()
+    {
+        missionIndicatorText.text = missions[currentMission] + " " + remainingenemies.ToString() + "/" + maxEnemies.ToString();
+    }
+
+    public void KilledEnemy()
+    {
+        remainingenemies--;
+        RemainingEnemiesText();
     }
 }

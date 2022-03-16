@@ -100,9 +100,9 @@ MonoBehaviour:
   audioPistola: {fileID: 4759842478162194265}
   disparoClip: {fileID: 8300000, guid: 6588152af6357584ab3fb4a153bfe48c, type: 3}
   recargaClip: {fileID: 8300000, guid: 631f5c9f6a46e264d86b58f56d22825c, type: 3}
+  gunGO: {fileID: 7736735683380308610}
   shootInterval: 0.2
   maxBulletsPerRound: 7
-  totalBullets: 14
   reloadTime: 3
   armed: 0
 --- !u!1 &355569639
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 1986109689}
   m_Layer: 0
   m_Name: JohnLemon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1018,7 +1018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1986109682}
   speed: 5
-  audio: {fileID: 0}
 --- !u!1 &1740057948467984837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1748,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c020bd5c9aea12f4dbfb5f04e6663d50, type: 3}
+--- !u!1 &7736735683380308610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4963460101280971161, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+    type: 3}
+  m_PrefabInstance: {fileID: 3440654143483925275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6867359637170341414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8138685684164662589, guid: c020bd5c9aea12f4dbfb5f04e6663d50,

@@ -6,16 +6,20 @@ using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
+    public Camera camera;
     public Animator animator;
     public AudioSource audioPistola;
     public AudioClip disparoClip;
     public AudioClip recargaClip;
+    public GameObject gunGO;
+    public LayerMask enemyLayer;
     public float shootInterval = 0.2f; //Tiempo para volver a disparar
     public int maxBulletsPerRound = 7; //Maximo de balas que puede disparar antes de recargar
-    public int totalBullets = 14; //Total de balas que se tiene
     public float reloadTime = 3f; //Tiempo de recarga
-    public bool armed;
+    public float damage = 2.3f;
 
+    private bool armed; //Checar si el jugador esta armado
+    private int totalBullets = 0; //Total de balas que se tiene
     private float shootCooldown = 0;
     private TMP_Text bulletCountText;
     private Image reloadImage;
@@ -31,6 +35,7 @@ public class Shoot : MonoBehaviour
         currentBullets = maxBulletsPerRound;
         bulletCountText.text = "";
         reloadImage.gameObject.SetActive(false);
+        EventManagerLvl1.current.pickedUpGun += PickUpGun;
     }
 
     // Update is called once per frame
@@ -51,12 +56,20 @@ public class Shoot : MonoBehaviour
                 animator.SetTrigger("New Trigger");
                 ReproducirAudio(audioPistola, disparoClip, false);
                 RaycastHit whatIHit;
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 shootCooldown = shootInterval;
                 currentBullets--;
 
-                if (Physics.Raycast(transform.position, transform.forward, out whatIHit, Mathf.Infinity))
+                Transform cameraTransform = Camera.main.transform;
+
+                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out whatIHit, 100.0f, enemyLayer))
                 {
-                    //Debug.Log(whatIHit.collider.name);
+                    Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 100.0f, Color.yellow);
+                    if (whatIHit.collider.tag == "Enemy")
+                    {
+                        WaypointPatrol enemy = whatIHit.collider.GetComponent<WaypointPatrol>();
+                        enemy.TakeDamage(damage);
+                    }
                 }
 
                 if (currentBullets == 0)
@@ -127,6 +140,13 @@ public class Shoot : MonoBehaviour
             source.Play();
         }
 
+    }
+
+    void PickUpGun()
+    {
+        gunGO.SetActive(true);
+        totalBullets = 14;
+        armed = true;
     }
 
     IEnumerator playEngineSound(AudioClip clip)
