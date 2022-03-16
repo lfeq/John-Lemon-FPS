@@ -104,6 +104,7 @@ MonoBehaviour:
   maxBulletsPerRound: 7
   totalBullets: 14
   reloadTime: 3
+  armed: 0
 --- !u!1 &355569639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1561,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3893245757484588442
 Transform:
@@ -1646,10 +1647,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3893245757484588442}
     m_Modifications:
+    - target: {fileID: 1510797664635395495, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880616305467107071, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4963460101280971161, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
         type: 3}
       propertyPath: m_Name
       value: Pistola
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963460101280971161, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963460101280971161, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006502461528379120, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8138685684164662589, guid: c020bd5c9aea12f4dbfb5f04e6663d50,
         type: 3}

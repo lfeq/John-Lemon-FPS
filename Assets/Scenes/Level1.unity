@@ -961,6 +961,7 @@ MonoBehaviour:
   missionIndicatorText: {fileID: 1896702905}
   missions:
   - Encuentra la pistola
+  finishMissionTimer: 2
 --- !u!4 &582039980
 Transform:
   m_ObjectHideFlags: 0
@@ -2072,36 +2073,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: JohnLemon
-      objectReference: {fileID: 0}
-    - target: {fileID: 2828326996537938325, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3866025983240402404, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4271882836258115260, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7736735683380308610, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7736735683380308610, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999540730661527019, guid: 0be3c7ef427b31242ab865256f315f54,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be3c7ef427b31242ab865256f315f54, type: 3}
