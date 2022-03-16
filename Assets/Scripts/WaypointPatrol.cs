@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class WaypointPatrol : MonoBehaviour
 {
     public NavMeshAgent navMeshAgent;
+    public Transform M_Player;
     public Transform[] waypoints;
 
     int m_CurrentWaypointIndex;
@@ -23,6 +24,8 @@ public class WaypointPatrol : MonoBehaviour
         {
             m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
             navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
-        }
+        } //Patrullar
+
+        GetComponent<NavMeshAgent>().destination = M_Player.position;
     }
 }
