@@ -53,7 +53,7 @@ public class Shoot : MonoBehaviour
                 }
             }
 
-            if (Input.GetMouseButtonDown(0) && shootCooldown <= 0 && currentBullets > 0 && !reloading)
+            if (Input.GetMouseButtonUp(0) && shootCooldown <= 0 && currentBullets > 0 && !reloading)
             {
                 animator.SetTrigger("New Trigger");
                 ReproducirAudio(audioPistola, disparoClip, false);
@@ -98,17 +98,9 @@ public class Shoot : MonoBehaviour
 
                     totalBullets -= savedBullets;
 
-                    if (totalBullets == 0)
-                    {
-                        currentBullets = 0;
-                        reloading = false;
-                    }
-
-                    else
-                    {
-                        currentBullets = maxBulletsPerRound;
-                        reloading = false;
-                    }
+                    currentBullets = maxBulletsPerRound;
+                    reloading = false;
+                    
 
                     if (totalBullets <= 0)
                     {
@@ -123,6 +115,12 @@ public class Shoot : MonoBehaviour
 
     void Reload()
     {
+        if (totalBullets == 0)
+        {
+            bulletCountText.text = currentBullets.ToString() + "/" + totalBullets.ToString();
+
+            return;
+        }
         reloadImage.gameObject.SetActive(true);
         animator.SetTrigger("New Trigger 0");
         ReproducirAudio(audioPistola, recargaClip, true);
